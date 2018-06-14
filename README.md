@@ -1,29 +1,51 @@
-Themosis framework
-==================
+=======
+# app
 
-[![Build Status](https://travis-ci.org/themosis/themosis.svg?branch=dev)](https://travis-ci.org/themosis/themosis)
+run this script in your terminal to install Composer
 
-The Themosis framework is a tool aimed to WordPress developers of any levels. But the better WordPress and PHP knowledge you have the easier it is to work with.
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php -r "if (hash_file('SHA384', 'composer-setup.php') ===     '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else {    echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
+    
+https://getcomposer.org/download/
 
-Themosis framework is a tool to help you develop websites and web applications faster using [WordPress](https://wordpress.org). Using an elegant and simple code syntax, Themosis framework helps you structure and organize your code and allows you to better manage and scale your WordPress websites and applications.
+ move composer to in your path:
+    
+    sudo mv composer.phar /usr/bin/composer
+    
+https://getcomposer.org/doc/00-intro.md#globally
 
-Development team
-----------------
-The framework was created by [Julien Lambé](http://www.themosis.com/), who continues to lead the development.
+Install Themosis framework:
 
-Contributing
-------------
-Any help is appreciated. The project is open-source and we encourage you to participate. You can contribute to the project in multiple ways by:
+    composer create-project themosis/themosis app
+    
+https://framework.themosis.com/docs/1.3/installation/#install-composer
 
-- Reporting a bug issue
-- Suggesting features
-- Sending a pull request with code fix or feature
-- Following the project on [GitHub](https://github.com/themosis)
-- Following us on Twitter: [@Themosis](https://twitter.com/Themosis)
-- Sharing the project around your community
+if this error shows up:
+  
+     [ErrorException]
+     proc_open(): fork failed - Cannot allocate memory
+     
+Verify if you have Swap space enabled:
 
-For details about contributing to the framework, please check the [contribution guide](http://framework.themosis.com/docs/1.3/contributing).
+     free -m
 
-License
--------
-The Themosis framework is open-source software licensed under [GPL-2+ license](http://www.gnu.org/licenses/gpl-2.0.html).
+     total used free shared buffers cached
+     Mem: 2048 357 1690 0 0 237
+     -/+ buffers/cache: 119 1928
+     Swap: 0 0 0
+    
+enable the swap:
+     
+     /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+     /sbin/mkswap /var/swap.1
+     /sbin/swapon /var/swap.1
+    
+https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors
+
+if you get this error:
+
+    Your requirements could not be resolved to an installable set of packages.
+    
+
