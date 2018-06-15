@@ -1,4 +1,3 @@
-=======
 # app
 
 run this script in your terminal to install Composer
