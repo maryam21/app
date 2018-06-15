@@ -48,3 +48,15 @@ if you get this error:
     Your requirements could not be resolved to an installable set of packages.
     
 
+then do:
+    
+    sudo apt-get install php-xml
+
+https://laracasts.com/discuss/channels/servers/problems-with-missing-php-extensions
+
+and then :
+     
+      sudo apt-get install php7.2-mbstring
+
+https://stackoverflow.com/questions/44891013/the-requested-php-extension-mbstring-is-missing-from-your-system
+
