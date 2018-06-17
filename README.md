@@ -60,3 +60,77 @@ and then :
 
 https://stackoverflow.com/questions/44891013/the-requested-php-extension-mbstring-is-missing-from-your-system
 
+fill in your credentials in .env.local
+
+replace the value of host in environment.php with the hostname, we can get the hostname by running:
+           
+       hostname
+       
+Apache configuration:
+=====================
+add to /etc/apache2/sites-enabled/000-default.conf
+
+    <VirtualHost *:80>
+    DocumentRoot /*your_workspace_directory*/app/htdocs
+    <Directory "/*your_workspace_directory*/app/htdocs">
+        Options FollowSymlinks Indexes MultiViews
+        AllowOverride All
+    </Directory>
+    </VirtualHost>   
+https://stackoverflow.com/questions/35314640/themosis-doesnt-run-on-localhost
+
+and then in /etc/apache2/apache2.conf:
+
+    <Directory /*your_workspace_directory*/app/htdocs/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+https://stackoverflow.com/questions/10873295/error-message-forbidden-you-dont-have-permission-to-access-on-this-server
+
+Wordpress installation:
+=======================
+
+    $ wget -c http://wordpress.org/latest.tar.gz
+    $ tar -xzvf latest.tar.gz
+
+move extracted files to Apache default root directory:
+    
+    $ sudo rsync -av wordpress/* /*your_workspace_directory*/app/htdocs/cms/
+    
+set permissions:
+
+    $ sudo chown -R www-data:www-data /*your_workspace_directory*/app/htdocs/cms/
+    $ sudo chmod -R 755 /**local_directory**/app/htdocs/cms/
+    
+create database:
+
+    $ mysql -u root -p 
+    mysql> CREATE DATABASE wp_db;
+    mysql> GRANT ALL PRIVILEGES ON wp_db.* TO 'your_username_here'@'localhost' IDENTIFIED BY 'your_chosen_password_here';
+    mysql> FLUSH PRIVILEGES;
+    mysql> EXIT;
+    
+rename existing wp-config-sample.php to wp-config.php in /*your_workspace_directory*/app/htdocs/cms/ :
+
+    $ sudo mv wp-config-sample.php wp-config.php
+
+fill db info in wp-config.php :
+
+    define('DB_NAME', 'wp_db'); /** MySQL database username */ define('DB_USER', 'username_here'); /** MySQL database   password */ define('DB_PASSWORD', 'password_here'); /** MySQL hostname */ define('DB_HOST', 'localhost'); /** Database Charset to use in creating database tables. */ define('DB_CHARSET', 'utf8'); /** The Database Collate type. Don't change this if in doubt. */ define('DB_COLLATE', '');
+    
+restart web server and mysql:
+
+    sudo service apache2 restart
+    sudo service mysql restart
+
+https://www.tecmint.com/install-wordpress-on-ubuntu-16-04-with-lamp/
+
+might need to install MySQL extension:
+
+
+setup: 
+
+    http://localhost/wp-admin/install.php?step=1
+    
+https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
