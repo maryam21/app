@@ -103,3 +103,8 @@ restart web server and mysql:
 
 https://www.tecmint.com/install-wordpress-on-ubuntu-16-04-with-lamp/
 
+might need to install MySQL extension:
+
+    sudo apt-get update
+    sudo apt-get install php7.2-mysql
+    sudo service apache2 restart
