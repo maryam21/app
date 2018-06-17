@@ -105,6 +105,9 @@ https://www.tecmint.com/install-wordpress-on-ubuntu-16-04-with-lamp/
 
 might need to install MySQL extension:
 
-    sudo apt-get update
-    sudo apt-get install php7.2-mysql
-    sudo service apache2 restart
+
+setup: 
+
+    http://localhost/wp-admin/install.php?step=1
+    
+https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
