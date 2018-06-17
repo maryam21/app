@@ -67,18 +67,19 @@ replace the value of host in environment.php with the hostname, we can get the h
        hostname
        
 Wordpress installation:
+=======================
 
     $ wget -c http://wordpress.org/latest.tar.gz
     $ tar -xzvf latest.tar.gz
 
 move extracted files to Apache default root directory:
     
-    $ sudo rsync -av wordpress/* /var/www/html/
+    $ sudo rsync -av wordpress/* /**your_local_directory**/app/htdocs/cms/
     
 set permissions:
 
-    $ sudo chown -R www-data:www-data /var/www/html/
-    $ sudo chmod -R 755 /var/www/html/
+    $ sudo chown -R www-data:www-data /**your_local_directory**/app/htdocs/cms/
+    $ sudo chmod -R 755 /**local_directory**/app/htdocs/cms/
     
 create database:
 
