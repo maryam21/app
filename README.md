@@ -65,3 +65,41 @@ fill in your credentials in .env.local
 replace the value of host in environment.php with the hostname, we can get the hostname by running:
            
        hostname
+       
+Wordpress installation:
+
+    $ wget -c http://wordpress.org/latest.tar.gz
+    $ tar -xzvf latest.tar.gz
+
+move extracted files to Apache default root directory:
+    
+    $ sudo rsync -av wordpress/* /var/www/html/
+    
+set permissions:
+
+    $ sudo chown -R www-data:www-data /var/www/html/
+    $ sudo chmod -R 755 /var/www/html/
+    
+create database:
+
+    $ mysql -u root -p 
+    mysql> CREATE DATABASE wp_db;
+    mysql> GRANT ALL PRIVILEGES ON wp_db.* TO 'your_username_here'@'localhost' IDENTIFIED BY 'your_chosen_password_here';
+    mysql> FLUSH PRIVILEGES;
+    mysql> EXIT;
+    
+rename existing wp-config-sample.php to wp-config.php in /var/www/html/ :
+
+    $ sudo mv wp-config-sample.php wp-config.php
+
+fill db info in wp-config.php :
+
+    define('DB_NAME', 'wp_db'); /** MySQL database username */ define('DB_USER', 'username_here'); /** MySQL database   password */ define('DB_PASSWORD', 'password_here'); /** MySQL hostname */ define('DB_HOST', 'localhost'); /** Database Charset to use in creating database tables. */ define('DB_CHARSET', 'utf8'); /** The Database Collate type. Don't change this if in doubt. */ define('DB_COLLATE', '');
+    
+restart web server and mysql:
+
+    sudo service apache2 restart
+    sudo service mysql restart
+
+https://www.tecmint.com/install-wordpress-on-ubuntu-16-04-with-lamp/
+
