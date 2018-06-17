@@ -60,3 +60,8 @@ and then :
 
 https://stackoverflow.com/questions/44891013/the-requested-php-extension-mbstring-is-missing-from-your-system
 
+fill in your credentials in .env.local
+
+replace the value of host in environment.php with the hostname, we can get the hostname by running:
+           
+       hostname
