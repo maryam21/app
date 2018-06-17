@@ -66,6 +66,28 @@ replace the value of host in environment.php with the hostname, we can get the h
            
        hostname
        
+Apache configuration:
+=====================
+add to /etc/apache2/sites-enabled/000-default.conf
+
+    <VirtualHost *:80>
+    DocumentRoot /*your_workspace_directory*/app/htdocs
+    <Directory "/*your_workspace_directory*/app/htdocs">
+        Options FollowSymlinks Indexes MultiViews
+        AllowOverride All
+    </Directory>
+    </VirtualHost>   
+https://stackoverflow.com/questions/35314640/themosis-doesnt-run-on-localhost
+
+and then in /etc/apache2/apache2.conf:
+
+    <Directory /*your_workspace_directory*/app/htdocs/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+https://stackoverflow.com/questions/10873295/error-message-forbidden-you-dont-have-permission-to-access-on-this-server
+
 Wordpress installation:
 =======================
 
