@@ -74,11 +74,11 @@ Wordpress installation:
 
 move extracted files to Apache default root directory:
     
-    $ sudo rsync -av wordpress/* /**your_local_directory**/app/htdocs/cms/
+    $ sudo rsync -av wordpress/* /*your_workspace_directory*/app/htdocs/cms/
     
 set permissions:
 
-    $ sudo chown -R www-data:www-data /**your_local_directory**/app/htdocs/cms/
+    $ sudo chown -R www-data:www-data /*your_workspace_directory*/app/htdocs/cms/
     $ sudo chmod -R 755 /**local_directory**/app/htdocs/cms/
     
 create database:
@@ -89,7 +89,7 @@ create database:
     mysql> FLUSH PRIVILEGES;
     mysql> EXIT;
     
-rename existing wp-config-sample.php to wp-config.php in /var/www/html/ :
+rename existing wp-config-sample.php to wp-config.php in /*your_workspace_directory*/app/htdocs/cms/ :
 
     $ sudo mv wp-config-sample.php wp-config.php
 
