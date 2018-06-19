@@ -19,7 +19,7 @@ PHP requirements:
 ==================
      sudo add-apt-repository ppa:ondrej/php
      sudo apt-get remove php5-common -y
-     sudo apt-get install php7.0 php7.0-fpm php7.0-mysql -y
+     sudo apt-get install php7.2 php7.2-fpm php7.2-mysql -y
      sudo apt-get --purge autoremove -y
      sudo a2enmod proxy_fcgi setenvif
      sudo a2enconf php7.2-fpm  
