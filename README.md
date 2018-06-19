@@ -24,6 +24,7 @@ PHP requirements:
      sudo a2enmod proxy_fcgi setenvif
      sudo a2enconf php7.2-fpm  
      sudo service apache2 reload
+https://askubuntu.com/questions/705880/how-to-install-php-7
 
 Install Themosis framework:
 ===========================
