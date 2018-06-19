@@ -15,8 +15,18 @@ https://getcomposer.org/download/
     
 https://getcomposer.org/doc/00-intro.md#globally
 
-Install Themosis framework:
+PHP requirements:
+==================
+     sudo add-apt-repository ppa:ondrej/php
+     sudo apt-get remove php5-common -y
+     sudo apt-get install php7.0 php7.0-fpm php7.0-mysql -y
+     sudo apt-get --purge autoremove -y
+     sudo a2enmod proxy_fcgi setenvif
+     sudo a2enconf php7.2-fpm  
+     sudo service apache2 reload
 
+Install Themosis framework:
+===========================
     composer create-project themosis/themosis app
     
 https://framework.themosis.com/docs/1.3/installation/#install-composer
