@@ -18,13 +18,23 @@ https://getcomposer.org/doc/00-intro.md#globally
 PHP requirements:
 ==================
      sudo add-apt-repository ppa:ondrej/php
+     sudo apt-get update
      sudo apt-get remove php5-common -y
      sudo apt-get install php7.2 php7.2-fpm php7.2-mysql -y
      sudo apt-get --purge autoremove -y
      sudo a2enmod proxy_fcgi setenvif
      sudo a2enconf php7.2-fpm  
      sudo service apache2 reload
+https://askubuntu.com/questions/705880/how-to-install-php-7
 
+In case php doesn't work with apache server:
+     
+     sudo apt-get install apache2 php7.2 libapache2-mod-php7.2
+     a2query -m php7.2
+     sudo a2enmod php7.2  
+     sudo service apache2 restart
+https://askubuntu.com/questions/451708/php-script-not-executing-on-apache-server
+     
 Install Themosis framework:
 ===========================
     composer create-project themosis/themosis app
