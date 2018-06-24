@@ -148,3 +148,29 @@ setup:
     http://localhost/wp-admin/install.php?step=1
     
 https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
+
+Seed data:
+==========
+Create seed.php file into project root directory and put the following:
+
+     <?php
+     require_once "vendor/autoload.php";
+
+     $conn = mysqli_connect("localhost", "root", getenv('DB_PASSWORD'), "wp_db");
+
+     $faker = Faker\Factory::create();
+
+    for ($i=0; $i < 50; $i++) { 
+       $sql = "INSERT INTO wp_users (user_nicename, user_email, user_pass, user_registered, user_login) VALUES ('" . $faker->name . "',        '" . $faker->email . "', '" . md5($faker->password) . "', '" . date('Y-m-d H:i:s', strtotime($faker->iso8601)) . "', '" . $faker-        >userName ."' )";
+    mysqli_query($conn, $sql);
+    }
+
+    for ($i=0; $i < 20; $i++){
+    $sql = "INSERT INTO wp_posts (post_author, post_date, post_content, post_title) VALUES ('". $faker->userName . "','" . date('Y-m-d       H:i:s', strtotime($faker->iso8601)) . "', '" . $faker->text . "', '" . $faker->sentence . "')";
+    mysqli_query($conn, $sql);
+    }
+    ?>
+
+Run:
+    
+    php seed.php
