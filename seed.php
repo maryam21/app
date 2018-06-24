@@ -1,7 +1,7 @@
 <?php
 require_once "vendor/autoload.php";
 
-$conn = mysqli_connect("localhost", "root", "1451", "wp_db");
+$conn = mysqli_connect("localhost", "root", "", "wp_db");
 
 $faker = Faker\Factory::create();
 
