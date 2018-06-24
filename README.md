@@ -174,3 +174,13 @@ Create seed.php file into project root directory and put the following:
 Run:
     
     php seed.php
+
+VueJs FrontEnd:
+=============
+Install Vuejs:
+
+    npm install -g @vue/cli
+    
+Create project:
+
+    vue create frontend
