@@ -11,7 +11,7 @@ for ($i=0; $i < 50; $i++) {
 }
 
 for ($i=0; $i < 20; $i++){
-    $sql = "INSERT INTO wp_posts (post_author, post_date, post_content, post_title) VALUES ('". $faker->userName . "','" . date('Y-m-d H:i:s', strtotime($faker->iso8601)) . "', '" . $faker->text . "', '" . $faker->sentence . "')";
+    $sql = "INSERT INTO wp_posts (post_author, post_date, post_content, post_title) VALUES ('". $faker->numberBetween($min = 1, $max = 50) . "','" . date('Y-m-d H:i:s', strtotime($faker->iso8601)) . "', '" . $faker->text . "', '" . $faker->sentence . "')";
     mysqli_query($conn, $sql);
 }
 ?>
