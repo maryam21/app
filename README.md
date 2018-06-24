@@ -131,14 +131,6 @@ create database:
     mysql> FLUSH PRIVILEGES;
     mysql> EXIT;
     
-rename existing wp-config-sample.php to wp-config.php in /*your_workspace_directory*/app/htdocs/cms/ :
-
-    $ sudo mv wp-config-sample.php wp-config.php
-
-fill db info in wp-config.php :
-
-    define('DB_NAME', 'wp_db'); /** MySQL database username */ define('DB_USER', 'username_here'); /** MySQL database   password */ define('DB_PASSWORD', 'password_here'); /** MySQL hostname */ define('DB_HOST', 'localhost'); /** Database Charset to use in creating database tables. */ define('DB_CHARSET', 'utf8'); /** The Database Collate type. Don't change this if in doubt. */ define('DB_COLLATE', '');
-    
 restart web server and mysql:
 
     sudo service apache2 restart
